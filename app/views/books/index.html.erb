@@ -1,1 +1,11 @@
 <h1>Book List</h1>
+
+<% @books.each do |book| %>
+	<li><h1>Book Title: <%= link_to book.title, book_path(book) %></h1></li>
+	<h2>Author: <%= book.author %></h2>
+	<h2>Month and Year Assigned: <%= "#{book.month_assigned} #{book.year_assigned}" %></h2>
+	<h3>Genre: <%= book.genre %></h3>
+	<h3>Number of Pages: <%= book.pages %></h3><br><br>
+<% end %>
+
+<%= link_to "User Page", user_path(@user) %>

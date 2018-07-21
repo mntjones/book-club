@@ -4,7 +4,7 @@ class Book < ApplicationRecord
 
 	
 	def avg_rating
-		rating = 0
+		rating = 0.0
 		count = self.reviews.count
 		self.reviews.each do |review|
 			rating += review.rating
@@ -12,7 +12,7 @@ class Book < ApplicationRecord
 		if count == 0
 			"This book has not been rated yet."
 		else
-			rating/count
+			(rating/count).round(1)
 		end
 		
 	end
