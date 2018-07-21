@@ -1,11 +1,15 @@
 <h1>Book Details</h1>
 
-<h2>Title:</h2>
-<h2>Author:</h2>
-<h2>Genre:</h2>
+<h2>Title:</h2><%= @book.title %>
+<h2>Author:</h2><%= @book.author %>
+<h2>Genre:</h2><%= @book.genre %>
 
-<h3>Number of Pages</h3>
+<h3>Number of Pages</h3><%= @book.pages %>
 
-<h2>Average Rating:</h2>
+<h2>Average Rating:</h2><%= @book.avg_rating %>
 
 <h2>Reviews:</h2>
+<% @reviews.each do |review| %>
+	<li><%= review.user.name %></li>
+	<p><%= review.comments %></p>
+<% end %>
