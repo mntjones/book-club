@@ -1,23 +1,25 @@
 <h1>Add a New Book for Book Club</h1>
 
-<%= form_tag '/books', method: 'post' do %>
-	<%= label_tag(:title, "Title") %>
-  <%= text_field_tag(:title) %><br>
 
-  <%= label_tag(:author, "Author") %>
-  <%= text_field_tag(:author) %><br>
+<%= form_for @book do |f| %>
 
-  <%= label_tag(:genre, "Genre") %>
-  <%= text_field_tag(:genre) %><br>
+	<%= f.label :title, "Title" %>
+  <%= f.text_field(:title) %><br>
 
-  <%= label_tag(:pages, "Number of Pages") %>
-  <%= text_field_tag(:pages) %><br>
+  <%= f.label(:author, "Author") %>
+  <%= f.text_field(:author) %><br>
 
-  <%= label_tag(:month_assigned, "Month Assigned for Book") %>
-	<%= select_tag :month_assigned, options_for_select(@grouped_options) %> <br>
+  <%= f.label(:genre, "Genre") %>
+  <%= f.text_field(:genre) %><br>
 
-	<%= label_tag(:year_assigned, "Year assigned - YYYY format, please.") %>
-  <%= text_field_tag(:year_assigned) %><br>
+  <%= f.label(:pages, "Number of Pages") %>
+  <%= f.text_field(:pages) %><br>
 
-	<%= submit_tag("Create New Book") %>
+  <%= label_tag('book[month_assigned]', "Month Assigned for Book") %>
+	<%= select_tag 'book[month_assigned]', options_for_select(@grouped_options) %> <br>
+
+	<%= f.label(:year_assigned, "Year assigned - YYYY format, please.") %>
+  <%= f.text_field(:year_assigned) %><br>
+
+	<%= f.submit ("Create New Book") %>
 <% end %>
