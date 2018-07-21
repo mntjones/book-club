@@ -1,4 +1,6 @@
 
+<h1>Create New Account</h1>
+
 <%= form_for @user do |f| %>
 	<%= f.label :name, "Enter Name" %>
 	<%= f.text_field :name %>
@@ -11,5 +13,5 @@
 	<br>
 	<br>
 
-	<%= f.submit, "Create User" %>
+	<%= f.submit %>
 <% end %>

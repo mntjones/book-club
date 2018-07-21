@@ -17,8 +17,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    @books = @user.books
-    @reviews = @user.reviews
+    if @user == current_user
+      @books = @user.books
+      @reviews = @user.reviews
+    else
+      destroy
+    end
+
   end
 
   def destroy

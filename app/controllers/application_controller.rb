@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
 
-	before_action :require_login
+	def welcome
+	end
+	
+
+
 
   private
 
