@@ -2,9 +2,9 @@ User.create(name: "Monica Tamaru", email: "monica@monica.com", password: "monica
 User.create(name: "Peter Parker", email: "spider@sense.com", password: "photos")
 User.create(name: "Remy LeBeau", email: "cards@cajun.com", password: "gambit")
 
-Book.create(title: "The Hobbit", author: "JR Tolkein", genre:"fantasy", pages: 384)
-Book.create(title: "Jane Eyre", author: "Charlotte Bronte", genre:"romance", pages: 290)
-Book.create(title: "Treasure Island", author: "Robert Louis Stevenson", genre:"adventure", pages: 122)
+Book.create(title: "The Hobbit", author: "JR Tolkein", genre:"fantasy", pages: 384, month_assigned: "January", year_assigned: 2018)
+Book.create(title: "Jane Eyre", author: "Charlotte Bronte", genre:"romance", pages: 290, month_assigned: "February", year_assigned: 2018)
+Book.create(title: "Treasure Island", author: "Robert Louis Stevenson", genre:"adventure", pages: 122, month_assigned: "March", year_assigned: 2018)
 
 Review.create(user_id: 1, book_id: 1, comments: "I enjoyed the world that Tolkein created. The adventure was exciting and I thouroughly loved the characters.", rating: 4)
 Review.create(user_id: 1, book_id: 2, comments: "This is one of my favourite books. The characters are dark but still relatable. It is a love story, but showcases the bitter parts of rejection and how easily love can mimic hated in some situations. I recommend it to everyone.", rating: 5)
