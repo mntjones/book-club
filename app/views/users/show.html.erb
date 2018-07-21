@@ -2,14 +2,18 @@
 
 <h2>Your Book Reviews</h2>
 
-<% @user.books.each do |book| %>
-		<h3>Book: <%= link_to book.title, book_path(book) %></h3><br>
-		<h3>Review:</h3> 
-		<p><%= book.comments %></p><br>
-		<h3>Rating</h3> <%= book.rating %><br><br>
-		<%= link_to "Edit Review", user_review_path(book.review) %><br>
-		<%= link_to "Delete Review", user_review_path, method: "delete" %><br><br>
+<% @books.each do |book| %>
+		<h3>Book: <%= link_to book.title, book_path(book) %></h3>
+		<h3>Author: <%= book.author %></h3>
+		<% @reviews.each do |review| %>
+			<% if review.book_id == book.id %>
+				<h3>Review:</h3> 
+				<p><%= review.comments %></p>
+				<h3>Rating: <%= review.rating %></h3><br><br>
+			<% end %>
+		<% end %>
+
 <% end %>
 
-<%= link_to 'Book List', books_path %><br>
 <%= link_to 'Log Out', user_path, method: "delete" %>
+
