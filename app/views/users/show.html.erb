@@ -10,13 +10,13 @@
 				<h3>Review:</h3> 
 				<p><%= review.comments %></p>
 				<h3>Rating: <%= review.rating %></h3><br>
-				<br>
 			<%= link_to 'Edit Review', edit_user_review_path(@user.id, review.id) %><br>
-			<%= link_to 'Delete Review', user_review_path(@user.id, review.id), method: 'delete' %>
+			<%= link_to 'Delete Review', user_review_path(@user, review), data: {:confirm => 'Are you sure?'}, :method=> :delete %><br>
+	
 			<% end %>
 			
 		<% end %>
 
 <% end %>
-
+<br>
 <%= link_to 'Log Out', user_path, method: "delete" %>
