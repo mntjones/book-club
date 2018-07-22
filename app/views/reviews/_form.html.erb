@@ -1,7 +1,8 @@
 <%= form_for ([@user, @review]) do |f| %>
 
-	<%= label_tag('book[title]', "Choose Book for Review") %>
-	<%= select_tag 'book[title]', options_from_collection_for_select(@books, "id", "title") %> <br>
+	<%= label_tag('book[title]', "Book for Review") %>
+	<%= select_tag 'book[title]', options_from_collection_for_select(@books, "id", "title", session['book[title]']) %> <br>
+
 
 	<%= f.label :comments, "Enter Comments" %>
 	<%= f.text_area :comments %><br>

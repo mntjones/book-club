@@ -10,9 +10,9 @@
 				<h3>Review:</h3> 
 				<p><%= review.comments %></p>
 				<h3>Rating: <%= review.rating %></h3><br>
-				<%= link_to 'Edit Review', edit_user_review_path(review) %>
-				<%= link_to 'Delete Review', 
-				<br><br>
+				<br>
+			<%= link_to 'Edit Review', edit_user_review_path(@user.id, review.id) %><br>
+			<%= link_to 'Delete Review', user_review_path(@user.id, review.id), method: 'delete' %>
 			<% end %>
 			
 		<% end %>
