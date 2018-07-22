@@ -9,11 +9,14 @@
 			<% if review.book_id == book.id %>
 				<h3>Review:</h3> 
 				<p><%= review.comments %></p>
-				<h3>Rating: <%= review.rating %></h3><br><br>
+				<h3>Rating: <%= review.rating %></h3><br>
+				<%= link_to 'Edit Review', edit_user_review_path(review) %>
+				<%= link_to 'Delete Review', 
+				<br><br>
 			<% end %>
+			
 		<% end %>
 
 <% end %>
 
 <%= link_to 'Log Out', user_path, method: "delete" %>
-
