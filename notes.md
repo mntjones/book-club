@@ -1,3 +1,7 @@
 Validations?
 
-<%= link_to 'Delete Review', user_review_path(@user.id, review.id), method: 'delete' %><br>
+Validate email unique
+Validate each review has a rating
+Validate each book has a title
+
+Others?
