@@ -5,7 +5,11 @@
 	<h2>Author: <%= book.author %></h2>
 	<h2>Month and Year Assigned: <%= "#{book.month_assigned} #{book.year_assigned}" %></h2>
 	<h3>Genre: <%= book.genre %></h3>
-	<h3>Number of Pages: <%= book.pages %></h3><br><br>
+	<h3>Number of Pages: <%= book.pages %></h3>
+	<h2>Average Rating: <%= book.avg_rating %></h2>
+	<h2>Number of Reviews: <%= book.review_count %></h2><br><br>
 <% end %>
 
+
+<%= link_to "Add New Book", new_book_path %><br>
 <%= link_to "User Page", user_path(@user) %>

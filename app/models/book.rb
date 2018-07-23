@@ -8,16 +8,20 @@ class Book < ApplicationRecord
 					    message: "should be a four-digit year less than or equal to this year"
 					  }
 	
+
+	def review_count
+		self.reviews.count # counts the number of reviews for a particular book
+	end
+
 	def avg_rating
 		rating = 0.0 # sets a float
-		count = self.reviews.count # counts the number of reviews for a particular book
 		self.reviews.each do |review|
 			rating += review.rating
 		end
-		if count == 0
+		if self.review_count == 0
 			"This book has not been rated yet."
 		else
-			(rating/count).round(1) # rounds rating to one decimal
+			(rating/self.review_count).round(1) # rounds rating to one decimal
 		end
 		
 	end

@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users do
-  	resources :reviews
+  	resources :reviews, only: [:edit, :update, :destroy]
   end
   
-  resources :books
+  resources :books do
+    resources :reviews, only: [:new, :create]
+  end
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"

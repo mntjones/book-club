@@ -1,9 +1,10 @@
-<h1>Edit Your Review for <%= @review.book.title %></h1>
-<%= form_for ([@user, @review]) do |f| %>
+<h1>Edit Your Review for <%= @book.title %></h1>
 
+<%= form_for ([@user, @review]) do |f| %>
 	<%= f.label :comments, "Enter Comments" %>
 	<%= f.text_area :comments %><br>
-	<%= f.label :rating, "Enter Rating - 1 to 5(best)" %>
+	<%= f.label :rating, "Enter Rating - 1 to 5 (best)" %>
 	<%= f.text_field :rating %><br>
 	<%= f.submit %>
+
 <% end %>

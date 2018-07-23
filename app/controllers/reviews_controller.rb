@@ -1,16 +1,17 @@
 class ReviewsController < ApplicationController
+	
 	def new
-		
-		@books = Book.all
-		@user = User.find_by_id(params[:user_id])
+
+		@book = Book.find_by_id(params[:book_id])
+		@user = current_user
 		@review = Review.new
 	end
 
 	def create
 		
 		@review = Review.new(review_params)
-		@review.user_id = params[:user_id]
-		@review.book_id = params[:book][:title]
+		@review.user_id = current_user.id
+		@review.book_id = params[:book_id]
 		
 		# validation to make sure a User can only have one review per book. Redirect to edit_path if an attempt is made to write another one.
 		already_reviewed = []
@@ -19,13 +20,13 @@ class ReviewsController < ApplicationController
 				already_reviewed << review
 			end
 		end
-		binding.pry
+
 		if !already_reviewed.empty?
 			redirect_to edit_user_review_path(already_reviewed[0].user_id, already_reviewed[0].id)
 		elsif @review.save
 			redirect_to user_path(@review.user)
 		else
-			redirect_to new_user_review_path
+			redirect_to new_book_review_path
 		end
 
 	end
@@ -44,6 +45,8 @@ class ReviewsController < ApplicationController
 
 		@review = Review.find_by(id: params[:id])
 		@review.update(review_params)
+		puts @review
+
 		redirect_to user_path(@review.user)
 	end
 

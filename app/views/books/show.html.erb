@@ -1,18 +1,19 @@
 <h1>Book Details</h1>
 
-<h2>Title:</h2><%= @book.title %>
-<h2>Author:</h2><%= @book.author %>
-<h2>Genre:</h2><%= @book.genre %>
+<h2>Title: <%= @book.title %> </h2>
+<h2>Author: <%= @book.author %></h2>
+<h2>Genre: <%= @book.genre %></h2>
 
-<h3>Number of Pages</h3><%= @book.pages %>
+<h3>Number of Pages: <%= @book.pages %></h3>
 
-<h2>Average Rating:</h2><%= @book.avg_rating %>
+<h2>Average Rating: <%= @book.avg_rating %> on <%= @book.review_count %> reviews</h2>
 
 <h2>Reviews:</h2>
 <% @reviews.each do |review| %>
-	<li><%= review.user.name %></li>
+	<li><h2>User: <%= review.user.name %></h2></li>
 	<p><%= review.comments %></p>
 <% end %>
 
+<%= link_to "Add New Review", new_book_review_path(@book) %><br>
 <%= link_to "All Books", books_path %><br>
 <%= link_to "User Page", user_path(@user) %>
