@@ -31,7 +31,7 @@ gem 'pry'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
-
+gem "omniauth-github", '1.1.1'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
