@@ -2,17 +2,24 @@ class UsersController < ApplicationController
 	before_action :logged_in?, only: [:show]
 
   def new
-    @user = User.new
+    if logged_in?
+      redirect_to user_path(current_user)
+      flash[:notice] = "You are already logged in."
+    else
+      @user = User.new
+      
+    end
   end
 
   def create
     @user = User.new(user_params)
+
     if @user.save
+      @message = nil
     	session[:user_id] = @user.id
     	redirect_to user_path(@user)
     else
-
-    	redirect_to new_user_path, alert: "Please enter data in all fields."
+    	render :new
     end
   end
 

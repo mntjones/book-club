@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-	
+
 	def new
 
 		@book = Book.find_by_id(params[:book_id])
@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
 		@review = Review.new(review_params)
 		@review.user_id = current_user.id
 		@review.book_id = params[:book_id]
+		@book = Book.find_by_id(@review.book_id)
 		
 		# validation to make sure a User can only have one review per book. Redirect to edit_path if an attempt is made to write another one.
 		already_reviewed = []
@@ -26,7 +27,7 @@ class ReviewsController < ApplicationController
 		elsif @review.save
 			redirect_to user_path(@review.user)
 		else
-			redirect_to new_book_review_path
+			render :new
 		end
 
 	end
@@ -44,10 +45,13 @@ class ReviewsController < ApplicationController
 	def update
 
 		@review = Review.find_by(id: params[:id])
-		@review.update(review_params)
-		puts @review
-
-		redirect_to user_path(@review.user)
+		@book = Book.find_by_id(@review.book_id)
+		@user = User.find_by_id(@review.user_id)
+		if @review.update(review_params)
+			redirect_to user_path(@user)
+		else
+			render :edit
+		end
 	end
 
 	def destroy

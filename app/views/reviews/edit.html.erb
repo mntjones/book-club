@@ -1,5 +1,11 @@
 <h1>Edit Your Review for <%= @book.title %></h1>
 
+<br>
+<% if @review.errors.any? %>
+    <font color="red"><%= @review.errors.full_messages.first %></font>
+<% end %>
+<br><br>
+
 <%= form_for ([@user, @review]) do |f| %>
 	<%= f.label :comments, "Enter Comments" %>
 	<%= f.text_area :comments %><br>
