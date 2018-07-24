@@ -1,8 +1,5 @@
 Validations?
 
-Validate email unique
-Validate each review has a rating
-Validate each book has a title
 
 NEED TO ADD VALIDATION - Month + year =  unique
 
