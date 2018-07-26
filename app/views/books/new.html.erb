@@ -1,41 +1,45 @@
-<h1>Add a New Book for Book Club</h1>
 
-<br>
-<% if @book.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@book.errors.count, "error") %>
-      prohibited this post from being saved:
-    </h2>
+<div style="padding:20px">
+  <h1 style="text-align: center">Add a New Book for Book Club</h1>
 
-    <ul>
-    <% @book.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+  <br>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@book.errors.count, "error") %>
+        prohibited this post from being saved:
+      </h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br>
+  <div style="background: pink">
+  <%= form_for @book do |f| %>
+
+  	<%= f.label :title, "Title" %>
+    <%= f.text_field(:title) %><br>
+
+    <%= f.label(:author, "Author") %>
+    <%= f.text_field(:author) %><br>
+
+    <%= f.label(:genre, "Genre") %>
+    <%= f.text_field(:genre) %><br>
+
+    <%= f.label(:pages, "Number of Pages") %>
+    <%= f.text_field(:pages) %><br>
+
+    <%= label_tag('book[month_assigned]', "Month Assigned for Book") %>
+  	<%= select_tag 'book[month_assigned]', options_for_select(@grouped_options) %> <br>
+
+  	<%= f.label(:year_assigned, "Year assigned - YYYY format, please.") %>
+    <%= f.text_field(:year_assigned) %><br>
+
+  	<%= f.submit ("Create New Book") %>
+  <% end %>
   </div>
-<% end %>
-<br>
-
-<%= form_for @book do |f| %>
-
-	<%= f.label :title, "Title" %>
-  <%= f.text_field(:title) %><br>
-
-  <%= f.label(:author, "Author") %>
-  <%= f.text_field(:author) %><br>
-
-  <%= f.label(:genre, "Genre") %>
-  <%= f.text_field(:genre) %><br>
-
-  <%= f.label(:pages, "Number of Pages") %>
-  <%= f.text_field(:pages) %><br>
-
-  <%= label_tag('book[month_assigned]', "Month Assigned for Book") %>
-	<%= select_tag 'book[month_assigned]', options_for_select(@grouped_options) %> <br>
-
-	<%= f.label(:year_assigned, "Year assigned - YYYY format, please.") %>
-  <%= f.text_field(:year_assigned) %><br>
-
-	<%= f.submit ("Create New Book") %>
-<% end %>
+</div>

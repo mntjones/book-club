@@ -4,10 +4,6 @@ class ApplicationController < ActionController::Base
 	end
 	
 
-
-
-  private
-
   def login(user)
     session[:user_id] = user.id
   end

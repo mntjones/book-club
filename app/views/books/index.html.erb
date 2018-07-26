@@ -1,15 +1,15 @@
-<h1>Book List</h1>
+<div style="padding: 20px">
+<h1 style="text-align: center;">Book List</h1>
+<h2><%= link_to "Add New Book", new_book_path %></h2><br>
 
 <% @books.each do |book| %>
-	<li><h1>Book Title: <%= link_to book.title, book_path(book) %></h1></li>
+	<li><h2>Book Title: <%= link_to book.title, book_path(book) %></h2></li>
 	<h2>Author: <%= book.author %></h2>
-	<h2>Month and Year Assigned: <%= "#{book.month_assigned} #{book.year_assigned}" %></h2>
+	<h3>Month and Year Assigned: <%= "#{book.month_assigned} #{book.year_assigned}" %></h3>
 	<h3>Genre: <%= book.genre %></h3>
-	<h3>Number of Pages: <%= book.pages %></h3>
-	<h2>Average Rating: <%= book.avg_rating %></h2>
-	<h2>Number of Reviews: <%= book.review_count %></h2><br><br>
+	<h3>Number of Pages: <%= book.pages %><br></h3>
+	<h3>Average Rating: <%= book.avg_rating %></h3>
+	<h3>Number of Reviews: <%= book.review_count %></h3><br><br>
 <% end %>
 
-
-<%= link_to "Add New Book", new_book_path %><br>
-<%= link_to "User Page", user_path(@user) %>
+</div>

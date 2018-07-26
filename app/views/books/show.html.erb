@@ -1,19 +1,20 @@
-<h1>Book Details</h1>
 
+<div style="padding: 20px">
+<h1 style="text-align: center">Book Details</h1>
+<br>
 <h2>Title: <%= @book.title %> </h2>
-<h2>Author: <%= @book.author %></h2>
-<h2>Genre: <%= @book.genre %></h2>
+<h2>Author: <%= @book.author %></h2><br>
+<h3>Genre: <%= @book.genre %></h3>
 
 <h3>Number of Pages: <%= @book.pages %></h3>
 
-<h2>Average Rating: <%= @book.avg_rating %> on <%= @book.review_count %> reviews</h2>
-
+<h3>Average Rating: <%= @book.avg_rating %> on <%= @book.review_count %> reviews</h3>
+<br>
 <h2>Reviews:</h2>
-<% @reviews.each do |review| %>
+<ul><% @reviews.each do |review| %>
 	<li><h2>User: <%= review.user.name %></h2></li>
 	<p><%= review.comments %></p>
-<% end %>
-
-<%= link_to "Add New Review", new_book_review_path(@book) %><br>
-<%= link_to "All Books", books_path %><br>
-<%= link_to "User Page", user_path(@user) %>
+<% end %></ul>
+<br>
+<h2><%= link_to "Add New Review", new_book_review_path(@book) %></h2>
+</div>

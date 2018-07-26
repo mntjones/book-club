@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <title>BookClub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    
   </head>
 
   <body>
+    <div id="navbar" class="light-fade" >
+      <div style="text-align:center; margin: 15px; padding:10px; justify-content: space-around; border-style: dotted;">
+        <nav class="clearfix">
+          <a class="selected" style = "padding:20px;" href="/">Home</a>
+          <a style = "padding:20px;" href="/logout">Log Out</a>
+          <a style = "padding:20px;" href="/login">My Reviews</a>
+          <a style = "padding:20px;" href="<%= books_path %>">Book List</a>
+        </nav>
+      </div><!-- .wrapper -->
+    </div><!-- #navbar -->
+
     <%= yield %>
   </body>
 </html>

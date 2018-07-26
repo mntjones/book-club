@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-
+	before_action :require_login
+	
 	def new
 		@book = Book.new
 		@grouped_options = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -25,8 +26,12 @@ class BooksController < ApplicationController
 	end
 
 	def index
-		@books = Book.all
-		@user = current_user
+		if logged_in?
+			@books = Book.all
+			@user = current_user
+		else
+			redirect_to '/', alert: "please log in"
+		end
 	end
 
 	private

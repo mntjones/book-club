@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-
+	before_action :require_login
+	
 	def new
 
 		@book = Book.find_by_id(params[:book_id])
