@@ -10,7 +10,7 @@
 
 [x] Your application must provide a standard user authentication, including signup, login, logout, and passwords. You can use Devise but given the complexity of that system, you should also feel free to roll your own authentication logic.
 
-[ ] Your authentication system should allow login from some other service. Facebook, twitter, foursquare, github, etc...
+[x] Your authentication system should allow login from some other service. Facebook, twitter, foursquare, github, etc...
 
 [x] You must make use of a nested resource with the appropriate RESTful URLs. Additionally, your nested resource must provide a form that relates to the parent resource. Imagine an application with user profiles. You might represent a person's profile via the RESTful URL of /profiles/1, where 1 is the primary key of the profile. If the person wanted to add pictures to their profile, you could represent that as a nested resource of /profiles/1/pictures, listing all pictures belonging to profile 1. The route /profiles/1/pictures/new would allow me to upload a new picture to profile 1. Focus on making a working application first and then adding more complexity. Making a nested URL resource like '/divisions/:id/teams/new' is great. Having a complex nested resource like 'countries/:id/sports/:id/divisions/:id/teams/new' is going to make this much harder on you.
 
@@ -30,13 +30,13 @@
 
 [x] Record at least a 30 min coding session. During the session, either think out loud or not. It's up to you. You don't need to submit it, but we may ask for it at a later time.
 
-[ ] Make sure to check each box in your spec.md (replace the space between the square braces with an x) and explain next to each one how you've met the requirement before you submit your project.
+[x] Make sure to check each box in your spec.md (replace the space between the square braces with an x) and explain next to each one how you've met the requirement before you submit your project.
 
 [x] Write a README.md.
 
 [x] Fill out this checklist. https://docs.google.com/forms/d/1QlU2-UQNSjlv2Tf2yP8oDsduMobK_1w0ZFXaTpywMCk/viewform?edit_requested=true
 
-[ ] Submit a video of how a user would interact with your working web application.
+[x] Submit a video of how a user would interact with your working web application.
 
 [x] Write a blog post about the project and process.
 
