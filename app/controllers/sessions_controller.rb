@@ -6,13 +6,10 @@ class SessionsController < ApplicationController
 
   def create
 
-    if auth_env #facebook login
-
-      @user = User.find_or_create_by(email: auth_env["info"]["email"])
-      @user.name = auth_env["info"]["email"]
-      @user.id = User.all.last.id + 1
+    if auth_env #github login
+      @user = User.from_omniauth(auth_env)
       @user.save
-      binding.pry
+      login(@user)
       redirect_to user_path(@user)
     else #regular login
       user = User.find_by_email(params[:email])
