@@ -8,6 +8,7 @@ class Book < ApplicationRecord
 					    message: "should be a four-digit year less than or equal to this year"
 					  }
 	
+	scope :most_reviews, -> { Book.left_joins(:reviews).group(:book_id).order('COUNT(reviews.id) DESC').limit(1) }
 
 	def review_count
 		self.reviews.count # counts the number of reviews for a particular book
@@ -24,6 +25,19 @@ class Book < ApplicationRecord
 			(rating/self.review_count).round(1) # rounds rating to one decimal
 		end
 		
+	end
+
+	def self.highest_rated
+
+		high_review = 0.0
+		hold = self.new
+
+		self.all.each do |book|
+			if book.avg_rating > high_review
+				hold = book
+			end
+		end
+		hold
 	end
 
 end
