@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#destroy"
   get "/auth/github/callback", to: "sessions#create"
 
+  get "/highest_rated", to: "books#highest_rated"
+
 
   root to: "application#welcome"
 end

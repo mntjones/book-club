@@ -1,12 +1,16 @@
 # book-club
 
-This Ruby on Rails web app is to keep track of a Book Club's book of the month, and post the user's comments and rating of the book.
+This Ruby on Rails web app is to keep track of a Book Club's book of the month, and post the user's comments and rating of the book. Included in this app is javascript and AJAX functionality (V2).
 
 ## Application Description
-User can: Sign Up, Log In, Logout
 
-Create a new book, view an individual book with reviews and rating, view list of books
-Create a new review, edit that review, delete that review
+This application was created for a Book Club to keep track of the books assigned by month. Each user who is signed in can review a Book by adding a rating (1-5) and a review. A User can view their homepage, which lists the books they have reviewed and the rating and reviews given.
+
+A User can add a book, with title, author and month and year assigned. A User can also view a single title and see the ratings and reviews for that book.
+
+A list of books is available with the average rating for each title shown.
+
+A User can add a new review, edit a previous review, or delete a review.
 
 
 ## Usage

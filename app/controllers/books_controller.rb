@@ -34,6 +34,10 @@ class BooksController < ApplicationController
 		end
 	end
 
+	def highest_rated
+		@book = Book.highest_rated
+	end
+
 	private
 	def book_params
 

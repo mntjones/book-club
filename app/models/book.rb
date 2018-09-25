@@ -41,3 +41,5 @@ class Book < ApplicationRecord
 	end
 
 end
+
+## /highest_rated
