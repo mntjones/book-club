@@ -21,6 +21,21 @@ To use this app, make sure you have rails installed (or gem install rails).
 4. rails s 
 Head over to to the url the rails server provides and the app will be up and running.
 
+## V1 - Rails
+Uses:
+- MVC models
+- ActiveRecord and SQL
+- OAuth authentication 
+- HTML, ERB and CSS
+- RESTful routing 
+
+## V2 - Rails with Javascript/AJAX
+Added:
+- rendering with jQuery and Active Model Serialization
+- Rails API reveals at least one has-many relationship in the JSON and renders to page
+- Rails API uses a form to create a resource and render to page without a page refresh
+- Translation of JSON responses to Javascript Model Objects
+
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/mntjones/book-club. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
