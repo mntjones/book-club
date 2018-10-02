@@ -23,12 +23,14 @@ class BooksController < ApplicationController
 		@book = Book.find_by_id(params[:id])
 		@user = current_user
 		@reviews = @book.reviews
+		render json: @book, status: 200
 	end
 
 	def index
 		if logged_in?
 			@books = Book.all
 			@user = current_user
+			render json: @books, status: 200
 		else
 			redirect_to '/', alert: "please log in"
 		end
