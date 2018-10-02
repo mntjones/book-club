@@ -43,3 +43,35 @@
   <% end %>
   </div>
 </div>
+
+<div id="bookResult">
+  <h1 id="bookTitle"></h1>
+  <h1 id="bookAuthor"></h1>
+  <h2 id="bookGenre"></h2>
+  <p id="bookPages"></p>
+  <p id="bookMonth"></p>
+  <p id="bookYear"></p>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+ 
+      var values = $(this).serialize();
+ 
+      var new_book = $.post('/books', values);
+ 
+      new_book.done(function(data) {
+        var book = data;
+        $("#bookTitle").text(book["title"]);
+        $("#bookAuthor").text(book["author"]);
+        $("#bookGenre").text(book["genre"]);
+        $("#bookPages").text(book["pages"]);
+        $("#bookMonth").text(book["month_assigned"]);
+        $("#bookYear").text(book["year_assigned"]);
+      });
+    });
+  });
+</script>

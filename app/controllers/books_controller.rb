@@ -12,7 +12,8 @@ class BooksController < ApplicationController
 		@grouped_options = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 		
 		if @book.save
-			redirect_to book_path(@book)
+			render json: @book, status: 201
+			#redirect_to book_path(@book)
 		else
 			render :new
 		end
