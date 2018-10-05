@@ -10,6 +10,22 @@
 
 <h3>Average Rating: <%= @book.avg_rating %> on <%= @book.review_count %> reviews</h3>
 <br>
+
+<button class="js-reviews" data-id="<%= @book.id %>">Reviews...</button>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-reviews").on('click', function() {
+    var id = $(this).data("id");
+    $.get("/books/" + id, function(data) {
+      // load reviews
+      debugger
+      $("#reviews-" + id).text(data);
+    });
+  });
+});
+</script>
+
 <h2>Reviews:</h2>
 <ul><% @reviews.each do |review| %>
 	<li><h2>User: <%= review.user.name %></h2></li>

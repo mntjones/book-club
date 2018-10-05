@@ -6,6 +6,12 @@
 	<li><h2>Book Title: <%= link_to book.title, book_path(book) %></h2></li>
 	<h2>Author: <%= book.author %></h2>
 	<h3>Month and Year Assigned: <%= "#{book.month_assigned} #{book.year_assigned}" %></h3>
+
+	<button class="js-more" data-id="<%= book.id %>">More...</button>
+
+	<!--- I want this info to be hidden unless "More..." button clicked --->
+
+
 	<h3>Genre: <%= book.genre %></h3>
 	<h3>Number of Pages: <%= book.pages %><br></h3>
 	<h3>Average Rating: <%= book.avg_rating %></h3>
