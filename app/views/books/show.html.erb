@@ -13,24 +13,5 @@
 
 <button class="js-reviews" data-id="<%= @book.id %>">Reviews...</button>
 
-<script type="text/javascript" charset="utf-8">
-$(function () {
-  $(".js-reviews").on('click', function() {
-    var id = $(this).data("id");
-    $.get("/books/" + id, function(data) {
-      // load reviews
-      debugger
-      $("#reviews-" + id).text(data);
-    });
-  });
-});
-</script>
-
-<h2>Reviews:</h2>
-<ul><% @reviews.each do |review| %>
-	<li><h2>User: <%= review.user.name %></h2></li>
-	<p><%= review.comments %></p>
-<% end %></ul>
-<br>
 <h2><%= link_to "Add New Review", new_book_review_path(@book) %></h2>
 </div>
