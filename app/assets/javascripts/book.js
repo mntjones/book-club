@@ -12,10 +12,18 @@ class Book {
 		this.pages = book["attributes"]["pages"];
 
 		this.reviews = book["attributes"]["reviews"]
+
+		//debugger
 	}
 
 	showReviews() {
 		//loop over this.reviews
+		let comments = [];
+		this.reviews.forEach (review => {
+			comments.push(`${review.comments} - Rating: ${review.rating}`)
+		})
+		debugger
+		return comments
 	}
 }
 
@@ -28,7 +36,8 @@ $(function () {
       var book = new Book(data.data);
       //debugger
       // book methods data.attributes.reviews - loop over reviews, format to html
-      // book.showReviews
+      book.showReviews();
+
       $("#reviews-" + id).text(data);
     });
   });
