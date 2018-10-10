@@ -11,7 +11,10 @@
 <h3>Average Rating: <%= @book.avg_rating %> on <%= @book.review_count %> reviews</h3>
 <br>
 
-<button class="js-reviews" data-id="<%= @book.id %>">Reviews...</button>
-<button class="js-debug" data-id="<%= @book.id %>">Debug...</button>
+<button type="button" class="js-reviews" data-id="<%= @book.id %>">Show Reviews</button>
+<div id="showReviews">
+</div>
+
+
 <h2><%= link_to "Add New Review", new_book_review_path(@book) %></h2>
 </div>

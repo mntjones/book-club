@@ -1,8 +1,6 @@
 // setting up a method to show all book reviews when button is clicked.
 class Book {
 	constructor(book) {
-
-		//debugger
 		this.id = book["id"];
 		this.title = book["attributes"]["title"];
 		this.author = book["attributes"]["author"];
@@ -12,21 +10,21 @@ class Book {
 		this.pages = book["attributes"]["pages"];
 
 		this.reviews = book["attributes"]["reviews"]
-
-		//debugger
 	}
 
 	showReviews() {
 		//loop over this.reviews
-		let comments = [];
+		let str = '<ul>';
 		this.reviews.forEach (review => {
-			comments.push(`${review.comments} - Rating: ${review.rating}`)
+			str += ('<li>' + `${review.comments} - Rating: ${review.rating}` + '</li>');
 		})
-		debugger
-		return comments
+		str += '</ul>'
+		return str
 	}
 }
 
+$( document ).ready(function() {
+});
 
 $(function () {
   $(".js-reviews").on('click', function() {
@@ -35,10 +33,13 @@ $(function () {
       // load reviews
       var book = new Book(data.data);
       //debugger
-      // book methods data.attributes.reviews - loop over reviews, format to html
-      book.showReviews();
+      //book methods data.attributes.reviews - loop over reviews, format to html
 
-      $("#reviews-" + id).text(data);
+      const reviewList = book.showReviews(); 
+      //debugger
+      result = document.getElementById("showReviews");
+      result.innerHTML = reviewList;
+      
     });
   });
 });
