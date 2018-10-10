@@ -24,9 +24,6 @@ class Book {
 }
 
 $( document ).ready(function() {
-});
-
-$(function () {
   $(".js-reviews").on('click', function() {
     var id = $(this).data("id");
     $.get("/books/" + id + '.json', function(data) {
