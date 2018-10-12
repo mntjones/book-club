@@ -13,32 +13,31 @@ class Book {
 	}
 
 	showReviews() {
-		//loop over this.reviews
+		//loop over this.reviews and add html to string
 		let str = '<ul>';
 		this.reviews.forEach (review => {
 			str += ('<li>' + `${review.comments} - Rating: ${review.rating}` + '</li>');
-		})
-		str += '</ul>'
-		return str
+		});
+		str += '</ul>';
+		return str;
 	}
 
 	moreInfo() {
 		let str = ''
+		// blank str to reset on method call
 		str += `<h3>Genre: ${this.genre}</h3>
-		<h3>Number of Pages: ${this.pages}</h3><br>
-		`;
+		<h3>Number of Pages: ${this.pages}</h3><br>`;
 		let reviews = '<h3>Reviews: </h3><br>' + this.showReviews();
 
 		return str + reviews;
-		
 	}
 }
-
+// show page - show reviews for book on button click
 $( document ).ready(function() {
   $(".js-reviews").on('click', function() {
     var id = $(this).data("id");
     $.get("/books/" + id + '.json', function(data) {
-      // load reviews
+  		// book data for specific book
       var book = new Book(data.data);
       const reviewList = book.showReviews(); 
       result = document.getElementById("showReviews");
@@ -46,18 +45,14 @@ $( document ).ready(function() {
     });
   });
 
+// index page - show more info and reviews for book on button push
 	$(".js-more").on('click', function() {
     var id = $(this).data("id");
     $.get("/books/" + id + '.json', function(data) {
- 
       var book = new Book(data.data);
-   
       const moreInfo = book.moreInfo(); 
-
       showMore = document.getElementById(`more-${book.id}`);
       showMore.innerHTML += moreInfo;
     });
   });  
-
-
 });
