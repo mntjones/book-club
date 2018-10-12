@@ -21,6 +21,17 @@ class Book {
 		str += '</ul>'
 		return str
 	}
+
+	moreInfo() {
+		let str = ''
+		str += `<h3>Genre: ${this.genre}</h3>
+		<h3>Number of Pages: ${this.pages}</h3><br>
+		`;
+		let reviews = '<h3>Reviews: </h3><br>' + this.showReviews();
+
+		return str + reviews;
+		
+	}
 }
 
 $( document ).ready(function() {
@@ -29,14 +40,24 @@ $( document ).ready(function() {
     $.get("/books/" + id + '.json', function(data) {
       // load reviews
       var book = new Book(data.data);
-      //debugger
-      //book methods data.attributes.reviews - loop over reviews, format to html
-
       const reviewList = book.showReviews(); 
-      //debugger
       result = document.getElementById("showReviews");
       result.innerHTML = reviewList;
-      
     });
   });
+
+	$(".js-more").on('click', function() {
+    var id = $(this).data("id");
+    $.get("/books/" + id + '.json', function(data) {
+ 
+      var book = new Book(data.data);
+   
+      const moreInfo = book.moreInfo(); 
+
+      showMore = document.getElementById(`more-${book.id}`);
+      showMore.innerHTML += moreInfo;
+    });
+  });  
+
+
 });
