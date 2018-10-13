@@ -9,7 +9,7 @@
 	<h2>Author: <%= book.author %></h2>
 	<h3>Month and Year Assigned: <%= "#{book.month_assigned} #{book.year_assigned}" %></h3>
 	<h3>Average Rating: <%= book.avg_rating %></h3>
-	<h3>Number of Reviews: <%= book.review_count %></h3><br><br>
+	<h3>Number of Reviews: <%= book.review_count %></h3><br>
 
 	<div id="more-<%= book.id %>" style="background-color: #ADD8E6"></div>
 	<button class="js-more" data-id="<%= book.id %>">More Info</button>

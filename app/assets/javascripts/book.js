@@ -12,16 +12,6 @@ class Book {
 		this.reviews = book["attributes"]["reviews"]
 	}
 
-	showReviews() {
-		//loop over this.reviews and add html to string
-		let str = '<ul>';
-		this.reviews.forEach (review => {
-			str += ('<li>' + `${review.comments} - Rating: ${review.rating}` + '</li>');
-		});
-		str += '</ul>';
-		return str;
-	}
-
 	moreInfo() {
 		let str = ''
 		// blank str to reset on method call
@@ -32,6 +22,16 @@ class Book {
 		return str + reviews;
 	}
 }
+
+Book.prototype.showReviews = function () {
+	let str = '<ul>';
+		this.reviews.forEach (review => {
+			str += ('<li>' + `${review.comments} - Rating: ${review.rating}` + '</li>');
+		});
+		str += '</ul>';
+		return str;
+}
+
 // show page - show reviews for book on button click
 $( document ).ready(function() {
   $(".js-reviews").on('click', function() {
