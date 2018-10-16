@@ -53,29 +53,6 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  // $(function () {
-  //   $('form').submit(function(event) {
-  //     //prevent form from submitting the default way
-  //     event.preventDefault();
-  
-  //     var values = $(this).serialize();
-  //     debugger
-  //     // values = "utf8=%E2%9C%93&authenticity_token=3o5drKht8JJGYToTlcjf2DogySVTCwiYixq9B5mZJVUg%2BmOz%2Fm881mg5uq4B3FH%2BEUCqtoF%2FBYEoivJew6d4OA%3D%3D&book%5Btitle%5D=some+book&book%5Bauthor%5D=me&book%5Bgenre%5D=space&book%5Bpages%5D=333&book%5Bmonth_assigned%5D=January&book%5Byear_assigned%5D=2019" 
-  //     var new_book = $.post('/books', values);
- 
-  //     new_book.done(function(data) {
-  //       debugger
-  //       // data = entire html page
-  //       $("#bookTitle").text(data["title"]);
-  //       $("#bookAuthor").text(data["author"]);
-  //       $("#bookGenre").text(data["genre"]);
-  //       $("#bookPages").text(data["pages"]);
-  //       $("#bookMonth").text(data["month_assigned"]);
-  //       $("#bookYear").text(data["year_assigned"]);
-  //     });
-  //   });
-  // });
-
   $('#bookResult').on('submit', function(e) {
     e.preventDefault();
     $.ajax ({
