@@ -12,7 +12,7 @@ class BooksController < ApplicationController
 		@grouped_options = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 		
 		if @book.save
-			render json: @book, status: 201
+			render '/books/show', :layout => false
 			#redirect_to book_path(@book)
 		else
 			render :new
