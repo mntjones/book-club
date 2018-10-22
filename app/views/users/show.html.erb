@@ -3,8 +3,8 @@
 
 
 <div style="padding: 20px">
-<h2 >Your Book Reviews</h2>
-
+<h2 >Your Book Reviews:</h2>
+<p>-----------------</p>
 <% @books.each do |book| %>
 		<h3>Book: <%= link_to book.title, book_path(book) %></h3>
 		<h3>Author: <%= book.author %></h3>

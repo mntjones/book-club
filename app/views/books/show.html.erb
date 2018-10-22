@@ -1,20 +1,32 @@
 
-<div style="padding: 20px">
-<h1 style="text-align: center">Book Details</h1>
-<br>
-<h2>Title: <%= @book.title %> </h2>
-<h2>Author: <%= @book.author %></h2><br>
-<h3>Genre: <%= @book.genre %></h3>
+<div style="padding: 20px" id="book-details">
+	<h1 style="text-align: center">Book Details</h1>
+	<br>
+	<h2>Title: <%= @book.title %> </h2>
+	<h2>Author: <%= @book.author %></h2><br>
+	<h3>Genre: <%= @book.genre %></h3>
 
-<h3>Number of Pages: <%= @book.pages %></h3>
+	<h3>Number of Pages: <%= @book.pages %></h3>
 
-<h3>Average Rating: <%= @book.avg_rating %> on <%= @book.review_count %> reviews</h3>
-<br>
+	<h3>Average Rating: <%= @book.avg_rating %> on <%= @book.review_count %> reviews</h3>
+	<br>
 
-<button type="button" class="js-reviews" data-id="<%= @book.id %>">Show Reviews</button>
-<div id="showReviews" style="background-color: #ADD8E6">
+	<button type="button" class="js-reviews" data-id="<%= @book.id %>">Show Reviews</button>
+	<div id="showReviews" style="background-color: #ADD8E6"></div>
+
+
+	<h2><%= link_to "Add New Review", new_book_review_path(@book) %></h2>
 </div>
 
-
-<h2><%= link_to "Add New Review", new_book_review_path(@book) %></h2>
+<div id="reviews">
+	<div style="padding: 20px; background: pink">
+		<%= form_for [@book, @review], :url => "/books/#{@book.id}/reviews" do |f| %>
+			<%= f.label :comments, "Enter Comments" %>
+			<%= f.text_area :comments %><br>
+			<%= f.label :rating, "Enter Rating - 1 to 5 (best)" %>
+			<%= f.text_field :rating %><br>
+			<%= f.submit %>
+		<% end %>
+	</div>
 </div>
+

@@ -12,7 +12,7 @@ class BooksController < ApplicationController
 		@grouped_options = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 		
 		if @book.save
-			render '/books/show', :layout => false
+			render '/books/show'
 			#redirect_to book_path(@book)
 		else
 			render :new
@@ -24,6 +24,7 @@ class BooksController < ApplicationController
 		@book = Book.find_by_id(params[:id])
 		@user = current_user
 		@reviews = @book.reviews
+		@review = Review.new
 		respond_to do |format|
       format.html { render :show }
       format.json { render json: @book }
