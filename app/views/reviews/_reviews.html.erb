@@ -1,0 +1,7 @@
+<ul style="background-color: #ADD8E6">
+	<% @reviews.each do |review| %>
+		<li id="reviewUser"><%= review.user.name %></li>
+		<p id="reviewBody"><%= review.comments %></p>
+		<p id="reviewRating">Rating: <%= review.rating %></p>
+	<% end %> 
+</ul>

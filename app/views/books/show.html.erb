@@ -11,22 +11,31 @@
 	<h3>Average Rating: <%= @book.avg_rating %> on <%= @book.review_count %> reviews</h3>
 	<br>
 
-	<button type="button" class="js-reviews" data-id="<%= @book.id %>">Show Reviews</button>
-	<div id="showReviews" style="background-color: #ADD8E6"></div>
+	<%= render 'reviews/reviews' %>
 
-
-	<h2><%= link_to "Add New Review", new_book_review_path(@book) %></h2>
-</div>
-
-<div id="reviews">
-	<div style="padding: 20px; background: pink">
-		<%= form_for [@book, @review], :url => "/books/#{@book.id}/reviews" do |f| %>
-			<%= f.label :comments, "Enter Comments" %>
-			<%= f.text_area :comments %><br>
-			<%= f.label :rating, "Enter Rating - 1 to 5 (best)" %>
-			<%= f.text_field :rating %><br>
-			<%= f.submit %>
-		<% end %>
+	<div class="reviewsAdd">
+		<div style="padding: 20px; background: pink">
+			<%= render 'form' %>
+		</div>
 	</div>
+
 </div>
 
+<!-- <script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('reviewsAdd').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+ 
+      var values = $(this).serialize();
+      var rev = $.post('/books', values);
+ 
+      rev.done(function(data) {
+        var r = data;
+        debugger
+        $("#reviewUser").text(r["user"]["name"]);
+        $("#reviewBody").text(r["comments"]);
+      });
+    });
+  });
+</script> -->

@@ -34,6 +34,30 @@ Book.prototype.showReviews = function () {
 
 // show page - show reviews for book on button click
 $( document ).ready(function() {
+
+	$('.reviewsAdd').on('submit', function(event) {
+		event.preventDefault();
+ 		
+		$.ajax ({
+			type: 'POST',
+			url: this.action,
+			data: $(this).serialize();,
+			success: function(res) {
+				var $ul = $('div.reviewsAdd ul');
+				$ul.append(res);
+			}
+		})
+
+    // var values = $(this).serialize();
+    // var rev = $.post('/books', values);
+    // debugger
+    // rev.done(function(data) {
+    //   var r = data;
+    //   $("#reviewUser").text(r["user"]["name"]);
+    //   $("#reviewBody").text(r["comments"]);
+    // });
+	})
+
   $(".js-reviews").on('click', function() {
     var id = $(this).data("id");
     $.get("/books/" + id + '.json', function(data) {

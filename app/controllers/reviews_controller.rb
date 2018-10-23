@@ -9,7 +9,6 @@ class ReviewsController < ApplicationController
 	end
 
 	def create
-		
 		@review = Review.new(review_params)
 		@review.user_id = current_user.id
 		@review.book_id = params[:book_id]
@@ -26,8 +25,8 @@ class ReviewsController < ApplicationController
 		if !already_reviewed.empty?
 			redirect_to edit_user_review_path(already_reviewed[0].user_id, already_reviewed[0].id)
 		elsif @review.save
-			render '/books/show'
-			#redirect_to user_path(@review.user)
+			redirect_to @book
+			#redirect_to book_path(@review.book)
 		else
 			render :new
 		end

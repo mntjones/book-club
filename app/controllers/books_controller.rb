@@ -12,6 +12,8 @@ class BooksController < ApplicationController
 		@grouped_options = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 		
 		if @book.save
+			@review = Review.new
+			@reviews = @book.reviews
 			render '/books/show'
 			#redirect_to book_path(@book)
 		else

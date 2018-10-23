@@ -42,26 +42,3 @@
   <% end %>
   </div>
 </div>
-
-<div id="bookResult">
-  <h1 id="title"></h1>
-  <h1 id="author"></h1>
-  <h2 id="genre"></h2>
-  <p id="pages"></p>
-  <p id="month_assigned"></p>
-  <p id="year_assigned"></p>
-</div>
-
-<script type="text/javascript" charset="utf-8">
-  $('#bookResult').on('submit', function(e) {
-    e.preventDefault();
-    $.ajax ({
-      url: this.action,
-      data: $(this).serialize(),
-      type: 'POST',
-      success: function(res) {
-        $("#bookResult").html(res);
-      }
-    })
-  })
-</script>

@@ -1,0 +1,7 @@
+<%= form_for [@book, @review], :url => "/books/#{@book.id}/reviews" do |f| %>
+	<%= f.label :comments, "Enter Comments" %>
+	<%= f.text_area :comments %><br>
+	<%= f.label :rating, "Enter Rating - 1 to 5 (best)" %>
+	<%= f.text_field :rating %><br>
+	<%= f.submit %>
+<% end %>
