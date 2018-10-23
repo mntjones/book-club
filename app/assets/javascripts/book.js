@@ -33,17 +33,24 @@ Book.prototype.showReviews = function () {
 }
 
 $( document ).ready(function() {
-  $(".js-reviews").on('click', function() {
-    var id = $(this).data("id");
-    $.get("/books/" + id + '.json', function(data) {
-  		// book data for specific book
-      var book = new Book(data.data);
-      const reviewList = book.showReviews(); 
-      result = document.getElementById("showReviews");
-      result.innerHTML = reviewList;
-    });
-  });
-
+ 
+	
+		$('#new_review').on('submit', function(event) {
+			event.preventDefault();
+	 		
+			$.ajax ({
+				type: 'POST',
+				url: this.action,
+				data: $(this).serialize(),
+				success: function(res) {
+					$("#review_comments").val("");
+					$("#review_rating").val("")
+					var $ul = $('div.reviews ul');
+					$ul.append(res);
+				}
+			});
+		})
+	
 // index page - show more info and reviews for book on button push
 	$(".js-more").on('click', function() {
 
@@ -58,19 +65,4 @@ $( document ).ready(function() {
   }); 
 })
 
-$(function(){
-	$('#new_review').on('submit', function(event) {
-		event.preventDefault();
- 		
-		$.ajax ({
-			type: 'POST',
-			url: this.action,
-			data: $(this).serialize(),
-			success: function(res) {
-				$("#reviewBody").val("");
-				var $ul = $('div.reviews ul');
-				$ul.append(res);
-			}
-		})
-	})
-});
+
