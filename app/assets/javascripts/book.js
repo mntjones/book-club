@@ -32,32 +32,7 @@ Book.prototype.showReviews = function () {
 		return str;
 }
 
-// show page - show reviews for book on button click
 $( document ).ready(function() {
-
-	$('.reviewsAdd').on('submit', function(event) {
-		event.preventDefault();
- 		
-		$.ajax ({
-			type: 'POST',
-			url: this.action,
-			data: $(this).serialize();,
-			success: function(res) {
-				var $ul = $('div.reviewsAdd ul');
-				$ul.append(res);
-			}
-		})
-
-    // var values = $(this).serialize();
-    // var rev = $.post('/books', values);
-    // debugger
-    // rev.done(function(data) {
-    //   var r = data;
-    //   $("#reviewUser").text(r["user"]["name"]);
-    //   $("#reviewBody").text(r["comments"]);
-    // });
-	})
-
   $(".js-reviews").on('click', function() {
     var id = $(this).data("id");
     $.get("/books/" + id + '.json', function(data) {
@@ -71,12 +46,31 @@ $( document ).ready(function() {
 
 // index page - show more info and reviews for book on button push
 	$(".js-more").on('click', function() {
+
     var id = $(this).data("id");
     $.get("/books/" + id + '.json', function(data) {
       var book = new Book(data.data);
       const moreInfo = book.moreInfo(); 
       showMore = document.getElementById(`more-${book.id}`);
-      showMore.innerHTML += moreInfo;
+
+      showMore.innerHTML = moreInfo;
     });
-  });  
+  }); 
+})
+
+$(function(){
+	$('#new_review').on('submit', function(event) {
+		event.preventDefault();
+ 		
+		$.ajax ({
+			type: 'POST',
+			url: this.action,
+			data: $(this).serialize(),
+			success: function(res) {
+				$("#reviewBody").val("");
+				var $ul = $('div.reviews ul');
+				$ul.append(res);
+			}
+		})
+	})
 });

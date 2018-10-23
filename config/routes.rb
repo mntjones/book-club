@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   
   resources :books do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create, :show]
   end
 
   get "/login", to: "sessions#new"

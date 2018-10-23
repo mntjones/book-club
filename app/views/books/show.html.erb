@@ -8,34 +8,17 @@
 
 	<h3>Number of Pages: <%= @book.pages %></h3>
 
-	<h3>Average Rating: <%= @book.avg_rating %> on <%= @book.review_count %> reviews</h3>
+	<h3>Average Rating: <%= @book.avg_rating %> - <%= @book.review_count %> reviews</h3>
 	<br>
-
-	<%= render 'reviews/reviews' %>
-
-	<div class="reviewsAdd">
-		<div style="padding: 20px; background: pink">
-			<%= render 'form' %>
-		</div>
-	</div>
-
 </div>
 
-<!-- <script type="text/javascript" charset="utf-8">
-  $(function () {
-    $('reviewsAdd').submit(function(event) {
-      //prevent form from submitting the default way
-      event.preventDefault();
- 
-      var values = $(this).serialize();
-      var rev = $.post('/books', values);
- 
-      rev.done(function(data) {
-        var r = data;
-        debugger
-        $("#reviewUser").text(r["user"]["name"]);
-        $("#reviewBody").text(r["comments"]);
-      });
-    });
-  });
-</script> -->
+<div class="reviews">
+	<%= render 'reviews/reviews' %>
+</div>
+
+
+<div class="reviewsAdd">
+	<div style="padding: 20px; background: pink">
+		<%= render 'form' %>
+	</div>
+</div>

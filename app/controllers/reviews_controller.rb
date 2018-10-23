@@ -25,8 +25,8 @@ class ReviewsController < ApplicationController
 		if !already_reviewed.empty?
 			redirect_to edit_user_review_path(already_reviewed[0].user_id, already_reviewed[0].id)
 		elsif @review.save
-			redirect_to @book
-			#redirect_to book_path(@review.book)
+			#render 'create.js', :layout => false
+			render 'reviews/show', :layout => false
 		else
 			render :new
 		end

@@ -14,6 +14,7 @@ class BooksController < ApplicationController
 		if @book.save
 			@review = Review.new
 			@reviews = @book.reviews
+			
 			render '/books/show'
 			#redirect_to book_path(@book)
 		else
