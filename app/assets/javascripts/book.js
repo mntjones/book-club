@@ -37,18 +37,22 @@ $( document ).ready(function() {
 	
 		$('#new_review').on('submit', function(event) {
 			event.preventDefault();
-	 		
+	 
 			$.ajax ({
 				type: 'POST',
 				url: this.action,
 				data: $(this).serialize(),
 				success: function(res) {
+					debugger
 					$("#review_comments").val("");
 					$("#review_rating").val("")
 					var $ul = $('div.reviews ul');
 					$ul.append(res);
+					
 				}
 			});
+
+			
 		})
 	
 // index page - show more info and reviews for book on button push
