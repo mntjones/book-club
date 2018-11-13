@@ -32,7 +32,7 @@ Book.prototype.showReviews = function () {
 		return str;
 }
 
-$( document ).ready(function() {
+$( document ).on('turbolinks:load', function() {
  
 	
 		$('#new_review').on('submit', function(event) {
@@ -43,29 +43,27 @@ $( document ).ready(function() {
 				url: this.action,
 				data: $(this).serialize(),
 				success: function(res) {
-					debugger
 					$("#review_comments").val("");
 					$("#review_rating").val("")
 					var $ul = $('div.reviews ul');
 					$ul.append(res);
-					
+					// $ul.append("<%=j (render('reviews/review', :review => @review)) %>");
 				}
 			});
-
-			
 		})
-	
+
+
 // index page - show more info and reviews for book on button push
 	$(".js-more").on('click', function() {
 
     var id = $(this).data("id");
-    $.get("/books/" + id + '.json', function(data) {
+    $.get("/books/" + id , function(data) {
       var book = new Book(data.data);
       const moreInfo = book.moreInfo(); 
       showMore = document.getElementById(`more-${book.id}`);
 
       showMore.innerHTML = moreInfo;
-    });
+    }, "json");
   }); 
 })
 
