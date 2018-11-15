@@ -2,19 +2,24 @@
 <h1 style="text-align: center;">Book List</h1>
 <h2><%= link_to "Add New Book", new_book_path %></h2><br>
 
+<div id="sort" style="padding: 20px">
+	<button class="book-sort">Sort by Avg Rating</button>
+</div>
 
-<% @books.each do |book| %>
-<div id="book-<%= book.id %>" data-id="<%= book.id %>">
-	<li><h2>Book Title: <%= link_to book.title, book_path(book) %></h2></li>
-	<h2>Author: <%= book.author %></h2>
-	<h3>Month and Year Assigned: <%= "#{book.month_assigned} #{book.year_assigned}" %></h3>
-	<h3>Average Rating: <%= book.avg_rating %></h3>
-	<h3>Number of Reviews: <%= book.review_count %></h3><br>
+<div id="bookList">
+	<% @books.each do |book| %>
+	<div id="book-<%= book.id %>" data-id="<%= book.id %>">
+		<li><h2>Book Title: <%= link_to book.title, book_path(book) %></h2></li>
+		<h2>Author: <%= book.author %></h2>
+		<h3>Month and Year Assigned: <%= "#{book.month_assigned} #{book.year_assigned}" %></h3>
+		<h3>Average Rating: <%= book.avg_rating %></h3>
+		<h3>Number of Reviews: <%= book.review_count %></h3><br>
 
-	<div id="more-<%= book.id %>" style="background-color: #ADD8E6"></div>
-	<button class="js-more" data-id="<%= book.id %>">More Info</button>
+		<div id="more-<%= book.id %>" style="background-color: #ADD8E6"></div>
+		<button class="js-more" data-id="<%= book.id %>">More Info</button>
 
-	
-<% end %>
 
+		
+	<% end %>
+	</div>
 </div>

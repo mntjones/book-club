@@ -8,7 +8,7 @@ class Book {
 		this.year_assigned = book["attributes"]["year-assigned"];
 		this.genre = book["attributes"]["genre"];
 		this.pages = book["attributes"]["pages"];
-
+		this.avgRating = book["attributes"]["avg-rating"]
 		this.reviews = book["attributes"]["reviews"]
 	}
 
@@ -51,6 +51,28 @@ $( document ).on('turbolinks:load', function() {
 				}
 			});
 		})
+
+// index page - sort
+	$(".book-sort").on('click', function() {
+
+		$.get("/books.json", function(list) {
+			list.data.sort(function(a,b) { 
+				return b.attributes["avg-rating"] - a.attributes["avg-rating"]});
+			$('#bookList').empty();
+
+			let str = "<ul>";
+			list.data.forEach(function(bookData){
+				let newBook = new Book(bookData)
+				str += ('<li>' + 'Title: ' + newBook.title.link(`/books/${newBook.id}`) + "  -  Rating: " + newBook.avgRating + "</li>");		
+			})
+			str += "</ul>"
+
+			$('#bookList').replaceWith(str);
+		})
+
+		
+
+	})
 
 
 // index page - show more info and reviews for book on button push
