@@ -1,5 +1,6 @@
 // setting up a method to show all book reviews when button is clicked.
 class Book {
+	// "this" is whatever book id is current
 	constructor(book) {
 		this.id = book["id"];
 		this.title = book["attributes"]["title"];
@@ -12,11 +13,13 @@ class Book {
 		this.reviews = book["attributes"]["reviews"]
 	}
 
+// method to show more info when that button is pushed on the list page
 	moreInfo() {
 		let str = ''
 		// blank str to reset on method call
 		str += `<h3>Genre: ${this.genre}</h3>
 		<h3>Number of Pages: ${this.pages}</h3><br>`;
+		// calls showReviews method below, lists each review
 		let reviews = '<h3>Reviews: </h3>' + this.showReviews();
 
 		return str + reviews;
@@ -37,7 +40,7 @@ $( document ).on('turbolinks:load', function() {
 	
 		$('#new_review').on('submit', function(event) {
 			event.preventDefault();
-	 
+	 // POST new review
 			$.ajax ({
 				type: 'POST',
 				url: this.action,
@@ -57,7 +60,9 @@ $( document ).on('turbolinks:load', function() {
 
 		$.get("/books.json", function(list) {
 			list.data.sort(function(a,b) { 
+				// sorts by avg rating
 				return b.attributes["avg-rating"] - a.attributes["avg-rating"]});
+			// clears #booklist in index.html.erb
 			$('#bookList').empty();
 
 			let str = "<ul>";
@@ -66,7 +71,7 @@ $( document ).on('turbolinks:load', function() {
 				str += ('<li>' + 'Title: ' + newBook.title.link(`/books/${newBook.id}`) + "  -  Rating: " + newBook.avgRating + "</li>");		
 			})
 			str += "</ul>"
-
+			// replace #booklist with sorted books
 			$('#bookList').replaceWith(str);
 		})
 
