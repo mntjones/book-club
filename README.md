@@ -2,6 +2,8 @@
 
 This Ruby on Rails web app is to keep track of a Book Club's book of the month, and post the user's comments and rating of the book. Included in this app is javascript and AJAX functionality (V2).
 
+For video demo: https://www.youtube.com/watch?v=a6daiusq_eU
+
 ## Application Description
 
 This application was created for a Book Club to keep track of the books assigned by month. Each user who is signed in can review a Book by adding a rating (1-5) and a review. A User can view their homepage, which lists the books they have reviewed and the rating and reviews given.
